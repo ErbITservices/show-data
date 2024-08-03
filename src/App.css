@@ -4,6 +4,16 @@
   text-overflow: ellipsis;
   text-align: center;
 }
+.highlightdata {
+  border-bottom: 2px solid red;
+  background-color: lightblue;
+}
+.col-form-label {
+  border-bottom: 2px solid blue;
+}
+.navbar {
+  background-color: #e3f2fd;
+}
 .table thead {
   overflow-x: scroll;
   height: 100px;
