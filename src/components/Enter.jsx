@@ -169,11 +169,11 @@ function Enter({ arr }) {
           <tbody>
             {arr.map((i) => (
               <tr>
-                <th scope="row">{i.srno}</th>
-                <td>{i.name}</td>
-                <td>{i.grantetaken}</td>
-                <td>{i.grantamount}</td>
-                <td>{i.status}</td>
+                <th scope="row">{i.gam}</th>
+                <td>{i.pin}</td>
+                <td>{i.taluko}</td>
+                <td>{i.district}</td>
+                <td>{i.lname}</td>
               </tr>
             ))}
           </tbody>

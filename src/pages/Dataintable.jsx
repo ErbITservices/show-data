@@ -1,52 +1,21 @@
 import Enter from "../components/Enter";
 import Input from "../components/input";
 import { useState } from "react";
+import { useEffect } from "react";
 function Dataintable() {
   let [arr, datastate] = useState([]);
-  let unjha = [
-    {
-      srno: 1,
-      name: "librarymdijffdfjd-1",
-      grantetaken: "Yes",
-      grantamount: "25000",
-      status: "Active",
-    },
-    {
-      srno: 2,
-      name: "library-2",
-      grantetaken: "No",
-      grantamount: "-",
-      status: "Active",
-    },
-    {
-      srno: 3,
-      name: "library-3",
-      grantetaken: "Yes",
-      grantamount: "20000",
-      status: "Active",
-    },
-    {
-      srno: 4,
-      name: "library-4",
-      grantetaken: "Yes",
-      grantamount: "10000",
-      status: "Active",
-    },
-    {
-      srno: 5,
-      name: "library-5",
-      grantetaken: "No",
-      grantamount: "-",
-      status: "Active",
-    },
-    {
-      srno: 6,
-      name: "library-6",
-      grantetaken: "Yes",
-      grantamount: "50000",
-      status: "Active",
-    },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const dataget = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3333/form/`);
+        console.log(response.data), setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    dataget();
+  }, []);
   let palanpur = [
     {
       srno: 1,
@@ -134,7 +103,7 @@ function Dataintable() {
   const showdata = (e) => {
     console.log(e.target.value);
     if (e.target.value == "unjha") {
-      datastate(unjha);
+      datastate(data);
     } else if (e.target.value == "sidhpur") {
       datastate(sidhpur);
     } else if (e.target.value == "palanpur") {
@@ -151,7 +120,7 @@ function Dataintable() {
         handleclick={handleonclick}
         showdata={showdata}
       ></Input>
-      {arr.length != 0 && <Enter arr={arr}></Enter>}
+      {data.length != 0 && <Enter arr={data}></Enter>}
     </>
   );
 }
