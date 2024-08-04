@@ -4,20 +4,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 function Dataintable() {
-  const [url, seturl] = useState("");
-
   let [arr, datastate] = useState([]);
   let [data, setData] = useState([]);
 
   const showdata = (e) => {
     let city = e.target.value;
-    seturl(city);
 
-    seturl((state) => {
-      console.log(state + " mihir");
-
-      return state;
-    });
     console.log("m");
 
     datastate(data.filter((elm) => elm.gam === city));
@@ -27,7 +19,9 @@ function Dataintable() {
   useEffect(() => {
     const dataget = async () => {
       try {
-        const response = await axios.get(`http://localhost:3333/form/`);
+        const response = await axios.get(
+          `https://backend-gram.onrender.com/form/`
+        );
         console.log(response.data), setData(response.data);
       } catch (error) {
         console.log(error);
