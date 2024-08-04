@@ -1,10 +1,50 @@
+import { useRef, useState } from "react";
+import { useEffect } from "react";
 import { BiBook, BiBookOpen } from "react-icons/bi";
-function SingleData() {
+import axios  from 'axios'
+function SingleData(props) {
+  let [arr, datastate] = useState([]);
+  let [data, setData] = useState([]);
+  useEffect(() => {
+    const dataget = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3333/form/`);
+         
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    dataget();
+  }, []);
+  const[tf,settf]=useState();
+  const number = useRef(false);
+  const handleonclick =()=>{
+    let temp = data.filter((elm)=>elm.registernumber===number.current.value);
+    
+    console.log("");
+    if(temp.length!==0){
+      datastate(data.filter((elm)=>elm.registernumber===number.current.value))
+      settf(true)
+      console.log(arr[0].gam);
+      
+    }
+      else settf(false);
+    
+        
+  }
   const d = new Date();
   let year = d.getFullYear();
   return (
-    <div className="form ">
+    <center>
+      <div class="form-group">
+    <label for="exampleFormControlFile1">Example file input</label>
+    <input ref={number} type="text" class="form-control-file"/>
+    <button onClick={handleonclick}>serch</button>
+  </div>
+    {arr.length!==0 && <div className="form ">
       <center>
+      
         <div className="head">
           <h1>
             <span className="icon">
@@ -24,7 +64,7 @@ function SingleData() {
           </label>
         </div>
         <div className="col-10">
-          <label className="highlightdata">data</label>
+          <label className="highlightdata">{arr[0].gam}</label>
         </div>
       </div>
       <div className="row mb-3 col-sm-13 align-items-center">
@@ -47,7 +87,7 @@ function SingleData() {
           </label>
         </div>
         <div className="col">
-          <label className="highlightdata">data</label>
+          <label className="highlightdata">{arr.registernumber}</label>
         </div>
         <div className="col-1">
           <label for="inputPassword6" className="col-form-label">
@@ -1142,7 +1182,8 @@ function SingleData() {
           </table>
         </div>
       </div>
-    </div>
+    </div>}
+    </center>
   );
 }
 export default SingleData;
