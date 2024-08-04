@@ -2,27 +2,32 @@ import Enter from "../components/Enter";
 import Input from "../components/input";
 import { useState } from "react";
 import { useEffect } from "react";
+import axios from "axios";
 function Dataintable() {
-  const URl = "";
-  const showdata = (e) => {
-    console.log(e.target.value);
-    if (e.target.value == "unjha") {
-      URl = "http://localhost:3333/" + "form";
-      datastate(data);
-    } else if (e.target.value == "sidhpur") {
-      datastate(sidhpur);
-    } else if (e.target.value == "palanpur") {
-      datastate(palanpur);
-    } else {
-      datastate([]);
-    }
-  };
+  const [url, seturl] = useState("");
+
   let [arr, datastate] = useState([]);
-  const [data, setData] = useState([]);
+  let [data, setData] = useState([]);
+
+  const showdata = (e) => {
+    let city = e.target.value;
+    seturl(city);
+
+    seturl((state) => {
+      console.log(state + " mihir");
+
+      return state;
+    });
+    console.log("m");
+
+    datastate(data.filter((elm) => elm.gam === city));
+    console.log();
+  };
+
   useEffect(() => {
     const dataget = async () => {
       try {
-        const response = await axios.get(`${URL}`);
+        const response = await axios.get(`http://localhost:3333/form/`);
         console.log(response.data), setData(response.data);
       } catch (error) {
         console.log(error);
@@ -92,7 +97,7 @@ function Dataintable() {
   ];
   let category = ["city", "town-1", "town-2", "village"];
   let [library, state] = useState([]);
-  let city = ["unjha", "visnagar", "meshana", "gandhinagar", "bhavnagar"];
+  let city = ["unjha", "ગામ:2", "meshana", "gandhinagar", "bhavnagar"];
   let town_1 = ["rajkot", "sidhpur", "baroda"];
   let town_2 = ["palanpur", "deesa", "dhanera"];
   let village = ["upera", "jaska", "sundhiya"];
@@ -123,7 +128,7 @@ function Dataintable() {
         handleclick={handleonclick}
         showdata={showdata}
       ></Input>
-      {data.length != 0 && <Enter arr={data}></Enter>}
+      {arr.length != 0 && <Enter arr={arr}></Enter>}
     </>
   );
 }

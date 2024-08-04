@@ -20,7 +20,7 @@ function Input(props) {
           <select
             className="form-select"
             aria-label="Default select example"
-            onChange={(event) => props.showdata(event)}
+            onChange={async(event) => props.showdata(event)}
           >
             <option selected>Select library</option>
             {props.library.map((i) => (
