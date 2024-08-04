@@ -3,12 +3,26 @@ import Input from "../components/input";
 import { useState } from "react";
 import { useEffect } from "react";
 function Dataintable() {
+  const URl = "";
+  const showdata = (e) => {
+    console.log(e.target.value);
+    if (e.target.value == "unjha") {
+      URl = "http://localhost:3333/" + "form";
+      datastate(data);
+    } else if (e.target.value == "sidhpur") {
+      datastate(sidhpur);
+    } else if (e.target.value == "palanpur") {
+      datastate(palanpur);
+    } else {
+      datastate([]);
+    }
+  };
   let [arr, datastate] = useState([]);
   const [data, setData] = useState([]);
   useEffect(() => {
     const dataget = async () => {
       try {
-        const response = await axios.get(`http://localhost:3333/form/`);
+        const response = await axios.get(`${URL}`);
         console.log(response.data), setData(response.data);
       } catch (error) {
         console.log(error);
@@ -100,18 +114,7 @@ function Dataintable() {
     }
     console.log(event.target.value);
   };
-  const showdata = (e) => {
-    console.log(e.target.value);
-    if (e.target.value == "unjha") {
-      datastate(data);
-    } else if (e.target.value == "sidhpur") {
-      datastate(sidhpur);
-    } else if (e.target.value == "palanpur") {
-      datastate(palanpur);
-    } else {
-      datastate([]);
-    }
-  };
+
   return (
     <>
       <Input
