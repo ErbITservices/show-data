@@ -22,7 +22,7 @@ function SingleData(props) {
   const handleonclick =()=>{
     let temp = data.filter((elm)=>elm.registernumber===number.current.value);
     
-    console.log("");
+    console.log(" m");
     if(temp.length!==0){
       datastate(data.filter((elm)=>elm.registernumber===number.current.value))
       settf(true)
