@@ -11,8 +11,17 @@ function Dataintable() {
     let city = e.target.value;
 
     console.log("m");
+    datastate([
+      {
+        srno: 1,
+        name: "priti",
+        grantetaken: "yes",
+        grantamount: "1000",
+        status: "Active",
+      },
+    ]);
 
-    datastate(data.filter((elm) => elm.gam === city));
+    // datastate(data.filter((elm) => elm.gam === city));
     console.log();
   };
 

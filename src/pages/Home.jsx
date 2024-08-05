@@ -13,7 +13,6 @@ function Home() {
           <Route path="/SingleData" element={<SingleData />}></Route>
         </Routes>
       </BrowserRouter>
-      {/* <Dataintable></Dataintable> */}
     </>
   );
 }
