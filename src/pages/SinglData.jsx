@@ -20,7 +20,8 @@ function SingleData(props) {
     dataget();
   }, []);
   const [tf, settf] = useState();
-  const number = useRef(false);
+  
+
   const handleonclick = () => {
     let temp = data.filter(
       (elm) => elm.registernumber === number.current.value
@@ -32,8 +33,16 @@ function SingleData(props) {
         data.filter((elm) => elm.registernumber === number.current.value)
       );
       settf(true);
-      console.log(arr[0].gam);
-    } else settf(false);
+=======
+  const handleonclick =()=>{
+    let temp = data.filter((elm)=>elm.registernumber===number.current.value);
+    
+    console.log(" m");
+    if(temp.length!==0){
+      datastate(data.filter((elm)=>elm.registernumber===number.current.value))
+      settf(true)
+
+    } else ;
   };
   const d = new Date();
   let year = d.getFullYear();
