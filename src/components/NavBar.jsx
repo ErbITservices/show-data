@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 function NavBar() {
+  // const [login, loginstate] = useState();
   return (
-    <nav class="navbar mb-3">
+    <div class=" mb-3">
       <form class="container-fluid justify-content-start">
         <a href="/">
           <button class="btn btn-outline-success me-2" type="button">
@@ -18,7 +21,7 @@ function NavBar() {
           </button>
         </a>
       </form>
-    </nav>
+    </div>
   );
 }
 export default NavBar;

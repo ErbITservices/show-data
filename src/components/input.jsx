@@ -20,7 +20,21 @@ function Input(props) {
           <select
             className="form-select"
             aria-label="Default select example"
-            onChange={async(event) => props.showdata(event)}
+            onChange={async (event) => props.handleclick(event)}
+          >
+            <option selected>Select library</option>
+            {props.library.map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className=" col">
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            onChange={async (event) => props.showdata(event)}
           >
             <option selected>Select library</option>
             {props.library.map((i) => (
