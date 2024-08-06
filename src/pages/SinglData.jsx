@@ -40,9 +40,16 @@ function SingleData(props) {
   return (
     <center>
       <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input ref={number} type="text" class="form-control-file" />
-        <button onClick={handleonclick}>serch</button>
+        <label for="exampleFormControlFile1">Search by id</label>
+        <input
+          ref={number}
+          type="number"
+          name="pin"
+          className="form-control col"
+        />
+        <button className="btn btn-primary col" onClick={handleonclick}>
+          serch
+        </button>
       </div>
       {arr.length !== 0 && (
         <div className="form ">

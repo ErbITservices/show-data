@@ -7,12 +7,13 @@ import Enter from "./components/Enter";
 import Input from "./components/input";
 import Home from "./pages/Home";
 import Dataintable from "./pages/Dataintable";
+import Login from "./pages/login";
 
 function App() {
   return (
     <center>
+      {/* <Login></Login> */}
       <Home></Home>
-      {/* <Dataintable></Dataintable> */}
     </center>
   );
 }
